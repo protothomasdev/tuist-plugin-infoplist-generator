@@ -39,7 +39,7 @@ extension InfoPlistEntry {
     /// Availability: macOS 10.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/lsapplicationcategorytype)
-    static func LSApplicationCategoryType(_ value: InfoPlistValue.ApplicationCategoryType) -> InfoPlistEntry {
+    static func LSApplicationCategoryType(_ value: InfoPlistValue.LSApplicationCategoryType) -> InfoPlistEntry {
         InfoPlistEntry(
             name: "Application Category",
             key: "LSApplicationCategoryType",
@@ -588,7 +588,7 @@ extension InfoPlistEntry.InfoPlistValue {
         case bundle = "BNDL"
     }
     
-    enum ApplicationCategoryType: String {
+    enum LSApplicationCategoryType: String {
         /// public.app-category.business
         case business = "public.app-category.business"
         /// public.app-category.developer-tools
