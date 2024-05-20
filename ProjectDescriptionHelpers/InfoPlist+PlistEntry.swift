@@ -138,8 +138,6 @@ public struct PlatformAvailability {
         return avaliabilities[.visionOS]?.lowerBound
     }
     
-    public var isDeprecated: Bool
-    
     public enum AvailabilityPlatform: String {
         case iOS
         case iPadOS
@@ -148,6 +146,8 @@ public struct PlatformAvailability {
         case tvOS
         case watchOS
         case visionOS
+        case proVideoWorkflowExtensions
+        case proVideoEncoderExtensions
     }
     
     private let latestOSVersions: [AvailabilityPlatform: Version] = [
@@ -157,10 +157,14 @@ public struct PlatformAvailability {
         .macOS: Version(14, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
         .tvOS: Version(17, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
         .watchOS: Version(10, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .visionOS: Version(1, 2, 0, prereleaseIdentifiers: ["Beta 4"])
+        .visionOS: Version(1, 2, 0, prereleaseIdentifiers: ["Beta 4"]),
+        .proVideoWorkflowExtensions: Version(1, 0, 0),
+        .proVideoEncoderExtensions: Version(1, 0, 0)
     ]
     
     private var avaliabilities: [AvailabilityPlatform: ClosedRange<Version>] = [:]
+    private var deprecatedPlattforms: Set<AvailabilityPlatform> = []
+    private let isDeprecated: Bool
     
     public init(iOS: Version? = nil, 
                 iPadOS: Version? = nil,
@@ -168,8 +172,7 @@ public struct PlatformAvailability {
                 macOS: Version? = nil,
                 tvOS: Version? = nil,
                 watchOS: Version? = nil,
-                visionOS: Version? = nil,
-                isDeprecated: Bool = false) {
+                visionOS: Version? = nil) {
         if let version = iOS, let latest = latestOSVersions[.iOS] {
             avaliabilities[.iOS] = version...latest
         }
@@ -191,7 +194,121 @@ public struct PlatformAvailability {
         if let version = visionOS, let latest = latestOSVersions[.visionOS] {
             avaliabilities[.visionOS] = version...latest
         }
-        self.isDeprecated = isDeprecated
+        
+        self.isDeprecated = false
+    }
+    
+    public init(proVideoWorkFlow: Version? = nil, 
+                proVideoEncoder: Version? = nil) {
+        if let version = proVideoWorkFlow,
+            let latest = latestOSVersions[.proVideoWorkflowExtensions] {
+            avaliabilities[.proVideoWorkflowExtensions] = version...latest
+        }
+        if let version = proVideoEncoder,
+            let latest = latestOSVersions[.proVideoEncoderExtensions] {
+            avaliabilities[.proVideoEncoderExtensions] = version...latest
+        }
+        
+        self.isDeprecated = false
+    }
+    
+    public init(iOSMin: Version? = nil,
+                iOSMax: Version? = nil,
+                iPadOSMin: Version? = nil,
+                iPadOSMax: Version? = nil,
+                macCatalystMin: Version? = nil,
+                macCatalystMax: Version? = nil,
+                macOSMin: Version? = nil,
+                macOSMax: Version? = nil,
+                tvOSMin: Version? = nil,
+                tvOSMax: Version? = nil,
+                watchOSMin: Version? = nil,
+                watchOSMax: Version? = nil,
+                visionOSMin: Version? = nil,
+                visionOSMax: Version? = nil) {
+        if let min = iOSMin, let latest = latestOSVersions[.iOS] {
+            if let iOSMax {
+                avaliabilities[.iOS] = min...iOSMax
+                deprecatedPlattforms.insert(.iOS)
+            } else {
+                avaliabilities[.iOS] = min...latest
+            }
+        }
+        if let min = iPadOSMin, let latest = latestOSVersions[.iPadOS] {
+            if let iPadOSMax {
+                avaliabilities[.iPadOS] = min...iPadOSMax
+                deprecatedPlattforms.insert(.iPadOS)
+            } else {
+                avaliabilities[.iPadOS] = min...latest
+            }
+        }
+        if let min = macCatalystMin, let latest = latestOSVersions[.macCatalyst] {
+            if let macCatalystMax {
+                avaliabilities[.macCatalyst] = min...macCatalystMax
+                deprecatedPlattforms.insert(.macCatalyst)
+            } else {
+                avaliabilities[.macCatalyst] = min...latest
+            }
+        }
+        if let min = macOSMin, let latest = latestOSVersions[.macOS] {
+            if let macOSMax {
+                avaliabilities[.macOS] = min...macOSMax
+                deprecatedPlattforms.insert(.macOS)
+            } else {
+                avaliabilities[.macOS] = min...latest
+            }
+        }
+        if let min = tvOSMin, let latest = latestOSVersions[.tvOS] {
+            if let tvOSMax {
+                avaliabilities[.tvOS] = min...tvOSMax
+                deprecatedPlattforms.insert(.tvOS)
+            } else {
+                avaliabilities[.tvOS] = min...latest
+            }
+        }
+        if let min = watchOSMin, let latest = latestOSVersions[.watchOS] {
+            if let watchOSMax {
+                avaliabilities[.watchOS] = min...watchOSMax
+                deprecatedPlattforms.insert(.watchOS)
+            } else {
+                avaliabilities[.watchOS] = min...latest
+            }
+        }
+        if let min = visionOSMin, let latest = latestOSVersions[.visionOS] {
+            if let visionOSMax {
+                avaliabilities[.visionOS] = min...visionOSMax
+                deprecatedPlattforms.insert(.visionOS)
+            } else {
+                avaliabilities[.visionOS] = min...latest
+            }
+        }
+        
+        self.isDeprecated = true
+    }
+    
+    public init(proVideoWorkFlowMin: Version? = nil,
+                proVideoWorkFlowMax: Version? = nil,
+                proVideoEncoderMin: Version? = nil,
+                proVideoEncoderMax: Version? = nil) {
+        if let min = proVideoWorkFlowMin, let latest = latestOSVersions[.proVideoWorkflowExtensions] {
+            if let proVideoWorkFlowMax {
+                avaliabilities[.proVideoWorkflowExtensions] = min...proVideoWorkFlowMax
+                deprecatedPlattforms.insert(.proVideoWorkflowExtensions)
+            } else {
+                avaliabilities[.proVideoWorkflowExtensions] = min...latest
+            }
+        }
+        
+        if let min = proVideoEncoderMin, let latest = latestOSVersions[.proVideoEncoderExtensions] {
+            if let proVideoEncoderMax {
+                avaliabilities[.proVideoEncoderExtensions] = min...proVideoEncoderMax
+                deprecatedPlattforms.insert(.proVideoEncoderExtensions)
+            } else {
+                avaliabilities[.proVideoEncoderExtensions] = min...latest
+            }
+        }
+        
+        self.isDeprecated = true
     }
     
     public init(iOS: ClosedRange<Version>? = nil,
@@ -203,26 +320,48 @@ public struct PlatformAvailability {
                 visionOS: ClosedRange<Version>? = nil) {
         if let iOS {
             avaliabilities[.iOS] = iOS
+            deprecatedPlattforms.insert(.iOS)
         }
         if let iPadOS {
             avaliabilities[.iPadOS] = iPadOS
+            deprecatedPlattforms.insert(.iPadOS)
         }
         if let macCatalyst {
             avaliabilities[.macCatalyst] = macCatalyst
+            deprecatedPlattforms.insert(.macCatalyst)
         }
         if let macOS {
             avaliabilities[.macOS] = macOS
+            deprecatedPlattforms.insert(.macOS)
         }
         if let watchOS {
             avaliabilities[.watchOS] = watchOS
+            deprecatedPlattforms.insert(.watchOS)
         }
         if let tvOS {
             avaliabilities[.tvOS] = tvOS
+            deprecatedPlattforms.insert(.tvOS)
         }
         if let visionOS {
             avaliabilities[.visionOS] = visionOS
+            deprecatedPlattforms.insert(.visionOS)
         }
+        
         self.isDeprecated = true
+    }
+    
+    public init(proVideoWorkFlow: ClosedRange<Version>? = nil,
+                proVideoEncoder: ClosedRange<Version>? = nil) {
+        if let proVideoWorkFlow {
+            avaliabilities[.proVideoWorkflowExtensions] = proVideoWorkFlow
+            deprecatedPlattforms.insert(.proVideoWorkflowExtensions)
+        }
+        if let proVideoEncoder {
+            avaliabilities[.proVideoEncoderExtensions] = proVideoEncoder
+            deprecatedPlattforms.insert(.proVideoEncoderExtensions)
+        }
+        
+        self.isDeprecated = false
     }
     
     /// Convenience accessor to retreive a minimum version given a `Platform`
