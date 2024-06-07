@@ -586,7 +586,7 @@ extension InfoPlistEntry {
     ///
     /// Use this key if your app needs temporary access to full accuracy location information. Provide a dictionary of messages that address different use cases, keyed by strings that you define. For example, if your app suggests nearby coffee shops in one part of the app, and finds nearby friends in another, you could include two entries:
     ///
-    /// [](https://docs-assets.developer.apple.com/published/cd215bf018/rendered2x-1611279466.png)
+    /// ![](https://docs-assets.developer.apple.com/published/cd215bf018/rendered2x-1611279466.png)
     ///
     /// When you request access, select among the messages at run time by providing the associated key to the [requestTemporaryFullAccuracyAuthorization(withPurposeKey:)](https://developer.apple.com/documentation/corelocation/cllocationmanager/3600216-requesttemporaryfullaccuracyauth) method:
     ///
@@ -953,7 +953,7 @@ extension InfoPlistEntry {
     ///
     /// The newly created, empty `NSUpdateSecurityPolicy` dictionary in your app’s property list resembles the image below:
     ///
-    /// [](https://docs-assets.developer.apple.com/published/a756794f14/renderedDark2x-1664913813.png)
+    /// ![](https://docs-assets.developer.apple.com/published/a756794f14/renderedDark2x-1664913813.png)
     ///
     /// Next, add one or both subcomponents to the security policy dictionary depending on your app’s update policy requirements. To allow any installer package signed by a specific Team ID, add an AllowPackages array to the NSUpdateSecurityPolicy dictionary. Using this key, the operating system allows any installer package signed by the specified Team IDs in this array to write content into the app’s bundle.
     ///
@@ -995,7 +995,7 @@ extension InfoPlistEntry {
     ///
     /// The final new NSUpdateSecurityPolicy dictionary resembles the configuration in the image below:
     ///
-    /// [](https://docs-assets.developer.apple.com/published/3ca38bdd8a/renderedDark2x-1664913816.png)
+    /// ![](https://docs-assets.developer.apple.com/published/3ca38bdd8a/renderedDark2x-1664913816.png)
     ///
     /// The following sample code describes a complete update policy, in JSON format, that allows any installer package signed by Team ID `Z9P22VQP42` to write to the app bundle. The policy also allows a single app associated with the bundle ID com.example.myapp.updater (also signed with the Team ID `Z9P22VQP42`) that can modify the app bundle.
     ///

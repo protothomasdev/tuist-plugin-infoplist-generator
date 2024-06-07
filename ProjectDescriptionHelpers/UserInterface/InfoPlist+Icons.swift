@@ -364,15 +364,15 @@ extension InfoPlistEntry {
             ///
             /// To use a symbol from SF Symbols as the icon, set the value of `CFBundleSymbolName` to the symbol’s name. For example, to use the `flame.fill` symbol, configure the `Info.plist` entry as follows:
             ///
-            ///![https://docs-assets.developer.apple.com/published/b6b479f451/3570821@2x.png](https://docs-assets.developer.apple.com/published/b6b479f451/3570821@2x.png)
+            ///![](https://docs-assets.developer.apple.com/published/b6b479f451/3570821@2x.png)
             ///
             /// The resulting item shown on the action sheet looks like this:
             ///
-            /// ![https://docs-assets.developer.apple.com/published/450eec3014/3570823@2x.png](https://docs-assets.developer.apple.com/published/450eec3014/3570823@2x.png)
+            /// ![](https://docs-assets.developer.apple.com/published/450eec3014/3570823@2x.png)
             ///
             /// In the Finder sidebar, it looks like this:
             ///
-            /// ![https://docs-assets.developer.apple.com/published/50724d2254/rendered2x-1638832308.png](https://docs-assets.developer.apple.com/published/50724d2254/rendered2x-1638832308.png)
+            /// ![](https://docs-assets.developer.apple.com/published/50724d2254/rendered2x-1638832308.png)
             ///
             /// To create a custom symbol for your app, see [Creating custom symbol images for your app](https://developer.apple.com/documentation/uikit/uiimage/creating_custom_symbol_images_for_your_app).
             ///
