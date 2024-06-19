@@ -111,6 +111,7 @@ extension InfoPlistEntry {
                         visionOS: "1.0"
                     )
                 )
+                
             }
             
             public struct AppIconReferenceNameEntry: PlistEntry {
@@ -131,8 +132,6 @@ extension InfoPlistEntry {
                     self.isRequired = isRequired
                 }
                 
-                /// - Parameter values: The reference name of the app icon.
-                ///
                 /// Availability: iOS 5.0+, iPadOS 5.0+, tvOS 9.0+, watchOS 2.0+, visionOS 1.0+
                 ///
                 /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleicons/cfbundlealternateicons/appiconreferencename/cfbundleiconfiles)
@@ -152,8 +151,6 @@ extension InfoPlistEntry {
                     )
                 }
                 
-                /// - Parameter value: A boolean that indicates that the icon is prerendered
-                ///
                 /// Availability: iOS 5.0+, iPadOS 5.0+, tvOS 9.0+, watchOS 2.0+, visionOS 1.0+
                 ///
                 /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleicons/cfbundlealternateicons/appiconreferencename/uiprerenderedicon)

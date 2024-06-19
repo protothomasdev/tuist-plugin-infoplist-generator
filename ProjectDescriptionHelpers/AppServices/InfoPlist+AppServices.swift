@@ -9,6 +9,38 @@ import ProjectDescription
 
 extension InfoPlistEntry {
     
+    // MARK: - Ad attributions
+    
+    /// Availability: iOS 17.4+, iPadOS 17.4+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/adnetworkidentifiers)
+    static func AdNetworkIdentifiers(_ values: [String]) -> Self {
+        Self(
+            name: nil,
+            key: "AdNetworkIdentifiers",
+            value: .array(values.map { .string($0) }),
+            availabilities: .init(
+                iOS: "17.4",
+                iPadOS: "17.4"
+            )
+        )
+    }
+    
+    /// Availability: iOS 17.4+, iPadOS 17.4+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/attributioncopyendpoint)
+    static func AttributionCopyEndpoint(_ value: String) -> Self {
+        Self(
+            name: nil,
+            key: "AttributionCopyEndpoint",
+            value: .string(value),
+            availabilities: .init(
+                iOS: "17.4",
+                iPadOS: "17.4"
+            )
+        )
+    }
+    
     // MARK: - Always On display
     
     /// - Parameter value: A Boolean value that determines whether the system displays the app in the Always On state.

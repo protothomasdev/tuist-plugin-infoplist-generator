@@ -1340,6 +1340,23 @@ extension InfoPlistEntry {
     
     // MARK: - Wallet
     
+    /// - Parameter value: A message that tells the user why the app is requesting access to financial data stored in Wallet.
+    /// 
+    /// Availability: iOS 17.4+, iPadOS 17.4+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsfinancialdatausagedescription)
+    static func NSFinancialDataUsageDescription(_ value: String) -> Self {
+        Self(
+            name: nil,
+            key: "NSFinancialDataUsageDescription",
+            value: .string(value),
+            availabilities: .init(
+                iOS: "17.4",
+                iPadOS: "17.4"
+            )
+        )
+    }
+    
     /// - Parameter value: A message that tells the user why the app is requesting identity information.
     ///
     /// - Important: This key is required if your app uses APIs that access identity information from Wallet.

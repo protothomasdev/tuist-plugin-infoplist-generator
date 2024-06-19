@@ -979,7 +979,7 @@ extension InfoPlistEntry {
     /// Availability: iOS 4.0+, iPadOS 4.0+, macOS 10.5+, visionOS 1.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/qlpreviewheight)
-    static func QLPreviewHeight(_ value: Int) -> InfoPlistEntry {
+    static func QLPreviewHeight(_ value: Int = 800) -> InfoPlistEntry {
         InfoPlistEntry(
             name: "Quick Look preview height",
             key: "QLPreviewHeight",
@@ -1000,7 +1000,7 @@ extension InfoPlistEntry {
     /// Availability: iOS 4.0+, iPadOS 4.0+, macOS 10.5+, visionOS 1.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/qlpreviewwidth)
-    static func QLPreviewWidth(_ value: Int) -> InfoPlistEntry {
+    static func QLPreviewWidth(_ value: Int = 600) -> InfoPlistEntry {
         InfoPlistEntry(
             name: "Quick Look preview height",
             key: "QLPreviewWidth",
@@ -1019,7 +1019,7 @@ extension InfoPlistEntry {
     /// Availability: iOS 4.0+, iPadOS 4.0+, macOS 10.5+, visionOS 1.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/qlsupportsconcurrentrequests)
-    static func QLSupportsConcurrentRequests(_ value: Bool) -> InfoPlistEntry {
+    static func QLSupportsConcurrentRequests(_ value: Bool = false) -> InfoPlistEntry {
         InfoPlistEntry(
             name: "Quick Look supports concurrent requests",
             key: "QLSupportsConcurrentRequests",
@@ -1040,7 +1040,7 @@ extension InfoPlistEntry {
     /// Availability: iOS 4.0+, iPadOS 4.0+, macOS 10.5+, visionOS 1.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/qlthumbnailminimumsize)
-    static func QLThumbnailMinimumSize(_ value: Int) -> InfoPlistEntry {
+    static func QLThumbnailMinimumSize(_ value: Int = 17) -> InfoPlistEntry {
         InfoPlistEntry(
             name: "Quick Look thumbnail minimum size",
             key: "QLThumbnailMinimumSize",

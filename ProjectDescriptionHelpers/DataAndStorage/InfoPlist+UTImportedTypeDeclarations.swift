@@ -124,7 +124,8 @@ extension InfoPlistEntry {
                     iPadOS: "3.2",
                     macOS: "10.5",
                     visionOS: "1.0"
-                )
+                ),
+                isRequired: true
             )
         }
         
