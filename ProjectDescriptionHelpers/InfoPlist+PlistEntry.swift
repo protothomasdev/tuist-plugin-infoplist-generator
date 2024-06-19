@@ -151,13 +151,13 @@ public struct PlatformAvailability {
     }
     
     private let latestOSVersions: [AvailabilityPlatform: Version] = [
-        .iOS: Version(17, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .iPadOS: Version(17, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .macCatalyst: Version(17, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .macOS: Version(14, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .tvOS: Version(17, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .watchOS: Version(10, 5, 0, prereleaseIdentifiers: ["Beta 4"]),
-        .visionOS: Version(1, 2, 0, prereleaseIdentifiers: ["Beta 4"]),
+        .iOS: Version(18, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .iPadOS: Version(18, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .macCatalyst: Version(18, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .macOS: Version(15, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .tvOS: Version(18, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .watchOS: Version(11, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
+        .visionOS: Version(2, 0, 0, prereleaseIdentifiers: ["Beta 1"]),
         .proVideoWorkflowExtensions: Version(1, 0, 0),
         .proVideoEncoderExtensions: Version(1, 0, 0)
     ]
