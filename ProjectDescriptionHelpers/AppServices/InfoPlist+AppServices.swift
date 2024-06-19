@@ -9,6 +9,93 @@ import ProjectDescription
 
 extension InfoPlistEntry {
     
+    // MARK: - Accessibility
+    
+    /// - Parameter value: A Boolean value that indicates to the system that your app supports the Music Haptics feature.
+    ///
+    /// To notify the system that your app supports the Music Haptics feature, add `MusicHapticsSupported` with a value of `YES` to your app’s `Info.plist`. When you add this key to your `Info.plist`, your app appears in the list of apps that support Music Haptics in Settings. For more information, read [Music Haptics](https://developer.apple.com/documentation/mediaaccessibility/music-haptics).
+    ///
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/musichapticssupported)
+    static func MusicHapticsSupported(_ value: Bool) -> Self {
+        Self(
+            name: "Supports Music Haptics",
+            key: "MusicHapticsSupported",
+            value: .boolean(value),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
+            )
+        )
+    }
+    
+    // MARK: - Accessories
+    
+    /// - Parameter values: An array of strings that indicates the interfaces AccessorySetupKit uses when discovering and configuring accessories.
+    ///
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupsupports)
+    static func NSAccessorySetupSupports(_ values: [InfoPlistValue.NSAccessorySetupSupportsValue]) -> Self {
+        Self(
+            name: "AccessorySetupKit - Supports",
+            key: "NSAccessorySetupSupports",
+            value: .array(values.map { .string($0.rawValue) }),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
+            )
+        )
+    }
+    
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothcompanyidentifiers)
+    static func NSAccessorySetupBluetoothCompanyIdentifiers(_ values: [String]) -> Self {
+        Self(
+            name: "AccessorySetupKit - Bluetooth Company Identifiers",
+            key: "NSAccessorySetupBluetoothCompanyIdentifiers",
+            value: .array(values.map { .string($0) }),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
+            )
+        )
+    }
+    
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothnames)
+    static func NSAccessorySetupBluetoothNames(_ values: [String]) -> Self {
+        Self(
+            name: "AccessorySetupKit - Bluetooth Names",
+            key: "NSAccessorySetupBluetoothNames",
+            value: .array(values.map { .string($0) }),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
+            )
+        )
+    }
+    
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothservices)
+    static func NSAccessorySetupBluetoothServices(_ values: [String]) -> Self {
+        Self(
+            name: "AccessorySetupKit - Bluetooth Services",
+            key: "NSAccessorySetupBluetoothServices",
+            value: .array(values.map { .string($0) }),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
+            )
+        )
+    }
+    
+    
+    
     // MARK: - Ad attributions
     
     /// Availability: iOS 17.4+, iPadOS 17.4+
@@ -37,6 +124,21 @@ extension InfoPlistEntry {
             availabilities: .init(
                 iOS: "17.4",
                 iPadOS: "17.4"
+            )
+        )
+    }
+    
+    /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/eligibleforadattributionkitreengagementpostbackcopies)
+    static func EligibleForAdAttributionKitReengagementPostbackCopies(_ value: Bool) -> Self {
+        Self(
+            name: nil,
+            key: "EligibleForAdAttributionKitReengagementPostbackCopies",
+            value: .boolean(value),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0"
             )
         )
     }
@@ -211,6 +313,26 @@ extension InfoPlistEntry {
     }
     
     // MARK: - Games
+    
+    /// - Parameter value: A key that ignores the system spatial-audio toggle in Control Center.
+    ///
+    /// In iOS 18 and tvOS 18 and later, the system automatically adds spatial audio to the output for games. To opt out of automatic spatial audio and support just your preferred spatial audio setup, add this key to your app’s Info.plist.
+    ///
+    /// Availability: iOS 18.0+, iPadOS 18.0+, tvOS 18.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/avgamebypasssystemspatialaudio)
+    static func AVGameBypassSystemSpatialAudio(_ value: Bool) -> Self {
+        Self(
+            name: nil,
+            key: "AVGameBypassSystemSpatialAudio",
+            value: .boolean(value),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0",
+                tvOS: "18.0"
+            )
+        )
+    }
     
     /// - Parameter value: A Boolean value indicating whether GameKit can add badges to a turn-based game icon.
     ///
@@ -1102,6 +1224,40 @@ extension InfoPlistEntry {
         )
     }
     
+    /// - Parameter value: A Boolean value that determines whether StoreKit includes finished consumable in-app purchases in transaction information.
+    ///
+    /// By default, this value is `false`. When it’s `false`, StoreKit doesn’t return finished consumables (unless refunded or revoked) in the transaction information from the following APIs:
+    ///
+    /// - The [`all`](https://developer.apple.com/documentation/storekit/transaction/3851203-all) sequence in [`Transaction`](https://developer.apple.com/documentation/storekit/transaction), which returns the customer’s transaction history for your app
+    ///
+    /// - The [`latest(for:)`](https://developer.apple.com/documentation/storekit/transaction/3792063-latest) in Transaction, which returns the customer’s most recent transaction for a specific product
+    ///
+    /// - The [`latestTransaction`](https://developer.apple.com/documentation/storekit/product/3803206-latesttransaction) in [`Product`](https://developer.apple.com/documentation/storekit/product), which provides the customer’s most recent transaction for the product
+    ///
+    /// When you set this value to `true`, StoreKit includes all in-app purchase transactions — including all finished consumables — in the transaction information when you use the `all`, `latest(for:)`, and `latestTransaction` APIs.
+    ///
+    /// - Warning: Before you set `SKIncludeConsumableInAppPurchaseHistory` to `true`, be sure you have a way to reconcile a customer’s consumable transactions on your server, not only on the device. For example, store a transaction’s unique transaction identifier, [`Transaction.ID`](https://developer.apple.com/documentation/storekit/transaction/id), along with its finish state to avoid unintentionally delivering content multiple times if the customer reinstalls the app. Use [`unfinished`](https://developer.apple.com/documentation/storekit/transaction/3856631-unfinished) to get and process unfinished transactions.
+    ///
+    /// Availability: iOS 18.0+, iPadOS 18.0+, Mac Catalyst 18.0+, macOS 15.0+, tvOS 18.0+, watchOS 11.0+, visionOS 2.0+
+    ///
+    /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/skincludeconsumableinapppurchasehistory)
+    static func SKIncludeConsumableInAppPurchaseHistory(_ value: Bool) -> Self {
+        Self(
+            name: nil,
+            key: "SKIncludeConsumableInAppPurchaseHistory",
+            value: .boolean(value),
+            availabilities: .init(
+                iOS: "18.0",
+                iPadOS: "18.0",
+                macCatalyst: "18.0",
+                macOS: "15.0",
+                tvOS: "18.0",
+                watchOS: "11.0",
+                visionOS: "2.0"
+            )
+        )
+    }
+    
     // MARK: - User activities
     
     /// - Parameter values: The user activity types that the app supports.
@@ -1125,6 +1281,11 @@ extension InfoPlistEntry {
 }
 
 extension InfoPlistEntry.InfoPlistValue {
+    
+    enum NSAccessorySetupSupportsValue: String {
+        case Bluetooth
+        case WiFi
+    }
     
     enum ENAPIVersionValue: Int {
         case v1 = 1
