@@ -51,6 +51,8 @@ extension InfoPlistEntry {
     
     /// Availability: iOS 18.0+, iPadOS 18.0+
     ///
+    /// Each identifier is a two-byte UUID that represents a company identifier as registered on the Bluetooth SIG website and database.
+    ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothcompanyidentifiers)
     static func NSAccessorySetupBluetoothCompanyIdentifiers(_ values: [String]) -> Self {
         Self(
@@ -66,6 +68,8 @@ extension InfoPlistEntry {
     
     /// Availability: iOS 18.0+, iPadOS 18.0+
     ///
+    /// Each entry is a full or partial name which the accessory advertises and helps AccessorySetupKit identify it.
+    ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothnames)
     static func NSAccessorySetupBluetoothNames(_ values: [String]) -> Self {
         Self(
@@ -80,6 +84,8 @@ extension InfoPlistEntry {
     }
     
     /// Availability: iOS 18.0+, iPadOS 18.0+
+    ///
+    /// Each value is a 16- or 128-bit UUID that represents either a Bluetooth Special Interest Group (SIG)-registered service or a custom service.
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsaccessorysetupbluetoothservices)
     static func NSAccessorySetupBluetoothServices(_ values: [String]) -> Self {
@@ -128,6 +134,10 @@ extension InfoPlistEntry {
         )
     }
     
+    /// - Parameter value: A Boolean value that indicates whether the developer receives copies of AdAttributionKit reengagement postbacks.
+    ///
+    /// Use this key to opt in to receive copies of reengagement postbacks. For more information, see [Configuring an advertised app](https://developer.apple.com/documentation/adattributionkit/configuring-an-advertised-app).
+    ///
     /// Availability: iOS 18.0+, iPadOS 18.0+
     ///
     /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/eligibleforadattributionkitreengagementpostbackcopies)
@@ -316,7 +326,7 @@ extension InfoPlistEntry {
     
     /// - Parameter value: A key that ignores the system spatial-audio toggle in Control Center.
     ///
-    /// In iOS 18 and tvOS 18 and later, the system automatically adds spatial audio to the output for games. To opt out of automatic spatial audio and support just your preferred spatial audio setup, add this key to your app’s Info.plist.
+    /// In iOS 18 and tvOS 18 and later, the system automatically adds spatial audio to the output for games. To opt out of automatic spatial audio and support just your preferred spatial audio setup, add this key to your app’s `Info.plist`.
     ///
     /// Availability: iOS 18.0+, iPadOS 18.0+, tvOS 18.0+
     ///
@@ -1230,7 +1240,7 @@ extension InfoPlistEntry {
     ///
     /// - The [`all`](https://developer.apple.com/documentation/storekit/transaction/3851203-all) sequence in [`Transaction`](https://developer.apple.com/documentation/storekit/transaction), which returns the customer’s transaction history for your app
     ///
-    /// - The [`latest(for:)`](https://developer.apple.com/documentation/storekit/transaction/3792063-latest) in Transaction, which returns the customer’s most recent transaction for a specific product
+    /// - The [`latest(for:)`](https://developer.apple.com/documentation/storekit/transaction/3792063-latest) in `Transaction`, which returns the customer’s most recent transaction for a specific product.
     ///
     /// - The [`latestTransaction`](https://developer.apple.com/documentation/storekit/product/3803206-latesttransaction) in [`Product`](https://developer.apple.com/documentation/storekit/product), which provides the customer’s most recent transaction for the product
     ///
@@ -1283,7 +1293,9 @@ extension InfoPlistEntry {
 extension InfoPlistEntry.InfoPlistValue {
     
     enum NSAccessorySetupSupportsValue: String {
+        /// Include this string if your app uses Bluetooth to set up accessories.
         case Bluetooth
+        /// Include this string if your app uses Wi-Fi to set up accessories.
         case WiFi
     }
     

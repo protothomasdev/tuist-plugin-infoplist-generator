@@ -54,6 +54,26 @@ extension InfoPlistEntry {
             )
         }
         
+        /// - Parameter value: Indicates that the credential provider supports automatic passkey upgrades.
+        ///
+        /// Availability: iOS 18.0+, iPadOS 18.0+, Mac Catalyst 18.0+, macOS 15.0+, visionOS 2.0+
+        ///
+        /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/supportsconditionalpasskeyregistration)
+        static func SupportsConditionalPasskeyRegistration(_ value: Bool) -> Self {
+            Self(
+                name: nil,
+                key: "SupportsConditionalPasskeyRegistration",
+                value: .boolean(value),
+                availabilities: .init(
+                    iOS: "18.0",
+                    iPadOS: "18.0",
+                    macCatalyst: "18.0",
+                    macOS: "15.0",
+                    visionOS: "2.0"
+                )
+            )
+        }
+        
         /// - Parameter value: A Boolean value that indicates whether your credential provider extension provides passwords.
         ///
         /// Availability: iOS 17.0+, iPadOS 17.0+, Mac Catalyst 17.0+, macOS 14.0+
@@ -69,6 +89,48 @@ extension InfoPlistEntry {
                     iPadOS: "17.0",
                     macCatalyst: "17.0",
                     macOS: "14.0"
+                )
+            )
+        }
+        
+        /// - Parameter value: Allows this credential provider to show up in one-time-code text fields, to allowing filling time-based verification codes.
+        ///
+        /// Availability: iOS 18.0+, iPadOS 18.0+, Mac Catalyst 18.0+, macOS 15.0+, visionOS 2.0+
+        ///
+        /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/providesonetimecodes)
+        static func ProvidesOneTimeCodes(_ value: Bool) -> Self {
+            Self(
+                name: nil,
+                key: "ProvidesOneTimeCodes",
+                value: .boolean(value),
+                availabilities: .init(
+                    iOS: "18.0",
+                    iPadOS: "18.0",
+                    macCatalyst: "18.0",
+                    macOS: "15.0",
+                    visionOS: "2.0"
+                )
+            )
+        }
+        
+        // MARK: - Provides text to AutoFill
+        
+        /// - Parameter value: Allows this credential provider to show up in the system AutoFill context menu, so that it can fill text in any text field.
+        ///
+        /// Availability: iOS 18.0+, iPadOS 18.0+, Mac Catalyst 18.0+, macOS 15.0+, visionOS 2.0+
+        ///
+        /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/providestexttoinsert)
+        static func ProvidesTextToInsert(_ value: Bool) -> Self {
+            Self(
+                name: nil,
+                key: "ProvidesTextToInsert",
+                value: .boolean(value),
+                availabilities: .init(
+                    iOS: "18.0",
+                    iPadOS: "18.0",
+                    macCatalyst: "18.0",
+                    macOS: "15.0",
+                    visionOS: "2.0"
                 )
             )
         }
