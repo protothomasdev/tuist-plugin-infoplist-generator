@@ -1,3 +1,3 @@
 import ProjectDescription
 
-let plugin = Plugin(name: "TuistInfoPlistGenerator")
+@MainActor let plugin = Plugin(name: "TuistInfoPlistGenerator")
