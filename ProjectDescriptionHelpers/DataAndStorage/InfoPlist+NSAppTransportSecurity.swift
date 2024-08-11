@@ -198,7 +198,7 @@ extension InfoPlistEntry {
         ///
         /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity/nsexceptiondomains)
         static func NSExceptionDomains(_ values: [String: [NSExceptionDomainsEntry]]) -> Self {
-            var childEntries: [PlistEntry] = values.flatMap { $0.1 }
+            let childEntries: [PlistEntry] = values.flatMap { $0.1 }
             var valueDict: [String: Plist.Value] = [:]
             for (key, valueArray) in values {
                 var domainDict: [String: Plist.Value] = [:]
@@ -243,7 +243,7 @@ extension InfoPlistEntry {
         ///
         /// Reference: [Apple Documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity/nspinneddomains)
         static func NSPinnedDomains(_ values: [String: [NSPinnedDomainsEntry]]) -> Self {
-            var childEntries: [PlistEntry] = values.flatMap { $0.1 }
+            let childEntries: [PlistEntry] = values.flatMap { $0.1 }
             var valueDict: [String: Plist.Value] = [:]
             for (key, valueArray) in values {
                 var domainDict: [String: Plist.Value] = [:]
